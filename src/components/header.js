@@ -11,7 +11,6 @@ import {
   DrawerContent,
   DrawerHeader,
   Button,
-
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/context";
@@ -29,10 +28,14 @@ function Header() {
       color="white"
     >
       <Text>
-        <Link to="/" style={{fontWeight:"bolder",fontSize:"20px"}}>Mohsin Ali Soomro</Link>
+        <Link to="/" style={{ fontWeight: "bolder", fontSize: "20px" }}>
+          Mohsin Ali Soomro
+        </Link>
       </Text>
       <HStack fontWeight="bold">
-        <Text><Link to="/post">Post</Link></Text>
+        <Text>
+          <Link to="/post">Post</Link>
+        </Text>
         <Text>Work</Text>
       </HStack>
 
@@ -71,8 +74,16 @@ function Header() {
               </DrawerBody>
 
               <DrawerFooter>
-                
-                <Link style={{color:"#314E8A",border:"1px solid #314E8A",padding:"3px 10px",borderRadius:"5px"}} to="/" onClick={() => state.dispatch({ type: "LOGOUT" })}>
+                <Link
+                  style={{
+                    color: "#314E8A",
+                    border: "1px solid #314E8A",
+                    padding: "3px 10px",
+                    borderRadius: "5px",
+                  }}
+                  to="/"
+                  onClick={() => state.dispatch({ type: "LOGOUT" })}
+                >
                   Logout
                 </Link>
               </DrawerFooter>
@@ -80,7 +91,10 @@ function Header() {
           </Drawer>
         </div>
       ) : (
-        <Link to="/login">Login</Link>
+        <div>
+          <Link to="/signup" style={{marginRight:"10px"}}>SignUp</Link>
+          <Link to="/login">Login</Link>
+        </div>
       )}
     </HStack>
   );

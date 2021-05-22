@@ -51,7 +51,7 @@ function Post() {
                     </span>
                   </p>
                 </div>
-                <img src={post.image} alt={post.image} />
+                <img width="100%" src={post.image} alt={post.image} />
                 <div
                   style={{
                     padding: "10px",

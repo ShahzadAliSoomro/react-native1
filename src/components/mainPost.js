@@ -62,10 +62,11 @@ function MainPost({ post }) {
             />
           </Circle>
           <Box ml="4" mt="2">
+          <Text color="gray.600">Author</Text>
             <Text fontWeight="bold">
               {post.author.firstName} {post.author.lastName}{" "}
             </Text>
-            <Text color="gray.600">Designation</Text>
+           
           </Box>
         </Box>
       </Box>

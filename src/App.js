@@ -9,6 +9,7 @@ import Login from "./components/login";
 
 import Post from "./components/post";
 import Portfolio from "./components/portfolio";
+import SignUp from "./components/signup";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
         </Route>
         <Route exact path="/create">
           <CreatePost />
