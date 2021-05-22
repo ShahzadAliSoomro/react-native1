@@ -15,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Switch>
+        {/* screen */}
         <Route exact path="/">
           <Portfolio />
         </Route>
