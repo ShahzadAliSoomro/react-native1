@@ -16,6 +16,7 @@ function App() {
       <Header />
       <Switch>
         {/* screen */}
+        {/* Portfolio */}
         <Route exact path="/">
           <Portfolio />
         </Route>
