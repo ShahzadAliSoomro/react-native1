@@ -1,45 +1,66 @@
-import React, { useContext, useRef } from "react";
-import {
-  HStack,
-  Text,
-  useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerFooter,
-  DrawerContent,
-  DrawerHeader,
-  Button,
-} from "@chakra-ui/react";
+import React, { useContext } from "react";
+
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { SiFiverr } from "react-icons/si";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/context";
 
 function Header() {
   const state = useContext(AuthContext);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
 
   return (
-    <HStack
-      bgColor="facebook.600"
-      p={5}
-      justifyContent="space-between"
-      color="white"
+    <div
+      style={{ backgroundColor: "#143d59 ", color: "#f4b41a", height: "100vh",position:"relative" }}
     >
-      <Text>
-        <Link to="/" style={{ fontWeight: "bolder", fontSize: "20px" }}>
-          Mohsin Ali Soomro
-        </Link>
-      </Text>
-      <HStack fontWeight="bold">
-        <Text>
+      <div className=" h-36 flex justify-center items-center border-b">
+        <div className="text-center">
+          <Link to="/" className="text-8xl">
+            M
+          </Link>
+          <p>Web Developer</p>
+        </div>
+      </div>
+      <div className="text-center text-lg">
+        <div className="border-b mt-2 mb-2">
           <Link to="/post">Post</Link>
-        </Text>
-        <Text>Work</Text>
-      </HStack>
-
-      {state.state.isAuthenticate ? (
+        </div>
+        <div className="border-b mt-2 mb-2">
+          <p>Skills</p>
+        </div>
+        <div className="border-b mt-2 mb-2">
+          <p>Work</p>
+        </div>
+      </div>
+      <div className="flex justify-center items-center mt-4 absolute bottom-10 left-3">
+        <div>
+          <a
+            href="https://github.com/mohsinalisoomro"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <AiFillGithub size={32} />
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/mohsin-ali-soomro/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <AiFillLinkedin size={32} />
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://www.fiverr.com/dvlopermohsin"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <SiFiverr size={32} />
+          </a>
+        </div>
+      </div>
+      {/* {state.state.isAuthenticate ? (
         <div style={{ color: "black" }}>
           <Button ref={btnRef} colorScheme="facebook.400" onClick={onOpen}>
             Profile
@@ -92,11 +113,13 @@ function Header() {
         </div>
       ) : (
         <div>
-          <Link to="/signup" style={{marginRight:"10px"}}>SignUp</Link>
+          <Link to="/signup" style={{ marginRight: "10px" }}>
+            SignUp
+          </Link>
           <Link to="/login">Login</Link>
         </div>
-      )}
-    </HStack>
+      )} */}
+    </div>
   );
 }
 

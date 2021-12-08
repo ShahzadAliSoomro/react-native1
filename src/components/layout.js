@@ -4,7 +4,7 @@ function Layout({ children }) {
   return (
     <div>
       {children}
-      <div className="container-fluid text-center bg-white border mt-2">
+      {/* <div className="container-fluid text-center bg-white border mt-2">
         <div className="p-5">
           <p>&copy;Copyright - 2021</p>
           <a
@@ -15,7 +15,7 @@ function Layout({ children }) {
             GITHUB
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
