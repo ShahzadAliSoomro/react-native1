@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { createPost } from "../services/post";
 import { useMutation } from "react-query";
-import { SimpleGrid, Box, useToast, Tag } from "@chakra-ui/react";
 import { styles } from "../styles/styles";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../context/context";
@@ -11,9 +10,7 @@ function CreatePost() {
 
   //history to prevent from unauthorized
   const history = useHistory();
-  //toast
-  const toast = useToast();
-  //
+
   //inputs fields
   const [image, setImage] = useState();
   const [previewImage, setPreviewImage] = useState(image);
@@ -45,19 +42,7 @@ function CreatePost() {
           category: "technology",
         });
         console.log("Created ", data);
-        toast({
-          title: data.data.title,
-          description: "We Save you blog in database",
-          status: "success",
-          isClosable: true,
-        });
       } else {
-        toast({
-          title: "Post created failed",
-          description: "Please check the internet connection",
-          status: "error",
-          isClosable: true,
-        });
       }
     },
   });
@@ -77,8 +62,8 @@ function CreatePost() {
   };
   return (
     <div className="form">
-      <SimpleGrid columns={2} spacing={2}>
-        <Box bg="whiteAlpha.600" height="100vh">
+      <div>
+        <div>
           <h1 style={styles.heading}>Create post</h1>
           <form onSubmit={createPostSubmit}>
             <div style={styles.form_div}>
@@ -151,8 +136,8 @@ function CreatePost() {
               <button style={styles.input}>Save</button>
             </div>
           </form>
-        </Box>
-        <Box bg="whiteAlpha.600" height="100vh">
+        </div>
+        <div>
           <h1 style={styles.heading}>Preview</h1>
           <div style={styles.form_div}>
             <img
@@ -163,16 +148,12 @@ function CreatePost() {
 
             <p style={styles.prevHeading}>{inputs.title}</p>
             <p style={styles.prevContent}>{inputs.content}</p>
-            <Tag size="lg" variant="solid" colorScheme="twitter">
-              {inputs.category.toUpperCase()}
-            </Tag>
+            <p>{inputs.category.toUpperCase()}</p>
 
-            <Tag size="lg" variant="solid" colorScheme="green">
-              {inputs.status.toUpperCase()}
-            </Tag>
+            <p>{inputs.status.toUpperCase()}</p>
           </div>
-        </Box>
-      </SimpleGrid>
+        </div>
+      </div>
     </div>
   );
 }

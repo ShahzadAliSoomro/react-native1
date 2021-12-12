@@ -1,7 +1,11 @@
+.card_container_plus {
+  background-color: #f4b41a;
+  color: #143d59;
+}
+
 .container_portfolio {
   height: 100vh;
   width: 50vw;
-  position: relative;
 }
 
 .vertical_center {

@@ -3,22 +3,16 @@ import Layout from "./layout";
 import { login } from "../services/user";
 import { useMutation } from "react-query";
 import { useHistory } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
 import { AuthContext } from "../context/context";
 function Login() {
   const state = useContext(AuthContext);
-  const toast = useToast();
   const history = useHistory();
   const [inputs, setInputs] = useState({ email: "", password: "" });
   const mutate = useMutation((user) => login(user), {
     onSuccess: (user) => {
       if (user.data.data) {
         sessionStorage.setItem("token", user.data.access_token);
-        toast({
-          title: "Login Successful",
-          description: "We redirect you to the create blog page",
-          status: "success",
-        });
+
         state.dispatch({
           type: "LOGIN",
           payload: {
@@ -34,13 +28,7 @@ function Login() {
         history.push("/create");
       }
     },
-    onError: () => {
-      toast({
-        title: "Login failed",
-        description: "Please try to enter correct details",
-        status: "error",
-      });
-    },
+    onError: () => {},
   });
   const loginSubmit = (e) => {
     e.preventDefault();

@@ -4,7 +4,6 @@ import "./index.css";
 import "./styles/tailwind.css";
 import App from "./App";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.css";
 import { AuthProvider } from "./context/context";
@@ -14,11 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <ChakraProvider>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </ChakraProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>,

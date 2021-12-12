@@ -11,7 +11,8 @@ import {
 function Portfolio() {
   const [hidden, setHidden] = useState(false);
   return (
-    <Layout>
+    <Layout >
+     
       <motion.div
         style={pageStyle}
         initial="initial"
@@ -19,9 +20,10 @@ function Portfolio() {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="container_portfolio"
+        className="container_portfolio "
       >
-        <div className="vertical_center">
+        
+        <div className="vertical_center " >
           <h1 className="text-8xl font-bold">Hi,</h1>
           <h1 className="text-8xl font-bold">I'm Mohsin,</h1>
           <h1 className="text-8xl font-bold">Web Developer</h1>

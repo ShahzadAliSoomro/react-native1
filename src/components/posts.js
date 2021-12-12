@@ -1,4 +1,3 @@
-import { Box, SimpleGrid, Text, Circle } from "@chakra-ui/layout";
 import React from "react";
 import Layout from "./layout";
 import MainPost from "./mainPost";
@@ -14,13 +13,22 @@ import {
 } from "../constants/animationConstant.js";
 function Posts() {
   const { error, isLoading, data, isError } = useQuery("posts", getPosts);
+  console.log({ data });
   if (isError) {
     return <div>Error :{error}</div>;
   }
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
+  // category: "programming"
+  // content: "The react app is integrated with wp rest API and crud operation on the posts\ncode https://github.com/MohsinAliSoomro/wp-rest-api-integration-in-react"
+  // createdAt: "2021-05-24T10:45:53.287Z"
+  // image: "https://res.cloudinary.com/ddb5bpbie/image/upload/v1621853152/n3pnftobd2daw8hpt1rn.png"
+  // public_id: "n3pnftobd2daw8hpt1rn"
+  // slug: "wordpress-cms-api-integration-in-reactjs-app"
+  // status: "publish"
+  // title: "WordPress CMS Api integration in reactjs app"
+  // updatedAt: "2021-05-24T10:45:53.287Z"
   return (
     <Layout>
       {/* <MainPost post={data.data.data[0]} /> */}
@@ -32,14 +40,63 @@ function Posts() {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="card_container"
+        className="card_container_plus"
       >
-        <div className="w-12/12">
+        {data &&
+          data.data &&
+          data.data.data.map((post) => {
+            return (
+              <div className="w-12/12">
+                <div class="container mt-32 mx-auto p-4 md:p-0">
+                  <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
+                    <div class="bg-cover bg-bottom border w-full md:w-1/3 h-64 md:h-auto relative">
+                      <img src={post?.image} alt={post?.image} height="100%" />
+                      <div class="absolute text-xl">
+                        <i class="fa fa-heart text-white hover:text-red-light ml-4 mt-4 cursor-pointer"></i>
+                      </div>
+                    </div>
+
+                    <div class="bg-white w-full md:w-2/3">
+                      <div class="h-full mx-auto px-6 md:px-0 md:pt-6 md:-ml-6 relative">
+                        <div class="bg-white lg:h-full p-6 -mt-6 md:mt-0 relative mb-4 md:mb-0 flex flex-wrap md:flex-wrap items-center">
+                          <div class="w-full lg:w-1/5 lg:border-right lg:border-solid text-center md:text-left">
+                            <h3>
+                              {post?.author?.firstName} {post.author.lastName}
+                            </h3>
+                            <p class="mb-0 mt-3 text-grey-dark text-sm italic">
+                              Moscow - Russia
+                            </p>
+                            <hr class="w-1/4 md:ml-0 mt-4  border lg:hidden" />
+                          </div>
+
+                          <div class="w-full lg:w-3/5 lg:px-3">
+                            <p class="text-md mt-4 lg:mt-0 text-justify md:text-left text-sm">
+                              {post?.content}
+                            </p>
+                          </div>
+
+                          {/* <div class="w-full lg:w-1/5 mt-6 lg:mt-0 lg:px-4 text-center md:text-left">
+                            <button class="bg-white hover:bg-grey-darker hover:text-white border border-solid border-grey w-1/3 lg:w-full py-2">
+                              Visit now
+                            </button>
+                          </div> */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        {/* <div className="w-12/12">
           <div class="container mt-32 mx-auto p-4 md:p-0">
             <div class="shadow-lg flex flex-wrap w-full lg:w-4/5 mx-auto">
               <div
                 class="bg-cover bg-bottom border w-full md:w-1/3 h-64 md:h-auto relative"
-                style={{backgroundImage:"url('https://images7.alphacoders.com/347/347549.jpg')"}}
+                style={{
+                  backgroundImage:
+                    "url('https://images7.alphacoders.com/347/347549.jpg')",
+                }}
               >
                 <div class="absolute text-xl">
                   <i class="fa fa-heart text-white hover:text-red-light ml-4 mt-4 cursor-pointer"></i>
@@ -84,7 +141,7 @@ function Posts() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <div>
           <img
             className="rounded-full object-cover w-80 h-80"

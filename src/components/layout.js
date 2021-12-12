@@ -2,7 +2,7 @@ import React from "react";
 
 function Layout({ children }) {
   return (
-    <div>
+    <div className="card_container_plus">
       {children}
       {/* <div className="container-fluid text-center bg-white border mt-2">
         <div className="p-5">

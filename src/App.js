@@ -13,13 +13,12 @@ import SignUp from "./components/signup";
 function App() {
   const location = useLocation();
   return (
-    <div>
-      <div
-        className="flex"
-        style={{ backgroundColor: "#f4b41a", color: "#143d59" }}
-      >
-        <div className="w-1/12 ">
-          <Header />
+    <>
+      <div className="flex">
+        <div className="w-1/12 hidden md:block lg:block">
+          <div className="fixed left-0 top-0 w-32">
+            <Header />
+          </div>
         </div>
         <div className="w-11/12">
           <AnimatePresence>
@@ -36,7 +35,7 @@ function App() {
       </div>
 
       {/* <ReactQueryDevtools initialIsOpen={true} /> */}
-    </div>
+    </>
   );
 }
 
