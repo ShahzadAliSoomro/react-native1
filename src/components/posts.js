@@ -40,7 +40,6 @@ function Posts() {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
-        className="card_container_plus"
       >
         {data &&
           data.data &&
