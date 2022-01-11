@@ -9,6 +9,7 @@ import Login from "./components/login";
 import Post from "./components/post";
 import Portfolio from "./components/portfolio";
 import SignUp from "./components/signup";
+import SkillPage from "./components/skillPage";
 
 function App() {
   const location = useLocation();
@@ -20,12 +21,13 @@ function App() {
             <Header />
           </div>
         </div>
-        <div className="w-11/12">
+        <div className="w-11/12 overflow-hidden">
           <AnimatePresence>
             <Switch location={location} key={location.pathname}>
               <Route exact path="/" component={Portfolio} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/skills" component={SkillPage} />
               <Route exact path="/create" component={CreatePost} />
               <Route exact path="/post" component={Posts} />
               <Route exact path="/post/:slug" component={Post} />

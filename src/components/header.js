@@ -10,7 +10,12 @@ function Header() {
 
   return (
     <div
-      style={{ backgroundColor: "#143d59 ", color: "#f4b41a", height: "100vh",position:"relative" }}
+      style={{
+        backgroundColor: "#143d59 ",
+        color: "#f4b41a",
+        height: "100vh",
+        position: "relative",
+      }}
     >
       <div className=" h-36 flex justify-center items-center border-b">
         <div className="text-center">
@@ -25,7 +30,7 @@ function Header() {
           <Link to="/post">Post</Link>
         </div>
         <div className="border-b mt-2 mb-2">
-          <p>Skills</p>
+          <Link to="/skills">Skills</Link>
         </div>
         <div className="border-b mt-2 mb-2">
           <p>Work</p>
