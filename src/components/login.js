@@ -2,11 +2,11 @@ import React, { useState, useContext } from "react";
 import Layout from "./layout";
 import { login } from "../services/user";
 import { useMutation } from "react-query";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/context";
 function Login() {
   const state = useContext(AuthContext);
-  const history = useHistory();
+  const navigate = Navigate();
   const [inputs, setInputs] = useState({ email: "", password: "" });
   const mutate = useMutation((user) => login(user), {
     onSuccess: (user) => {
@@ -25,7 +25,7 @@ function Login() {
           },
         });
 
-        history.push("/create");
+        navigate("/create");
       }
     },
     onError: () => {},

@@ -2,7 +2,7 @@ import "./App.css";
 import Posts from "./components/posts";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AnimatePresence } from "framer-motion";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import CreatePost from "./components/createPost";
 import Header from "./components/header";
 import Login from "./components/login";
@@ -23,7 +23,7 @@ function App() {
         </div>
         <div className="w-11/12 overflow-hidden">
           <AnimatePresence>
-            <Switch location={location} key={location.pathname}>
+            <Routes location={location} key={location.pathname}>
               <Route exact path="/" component={Portfolio} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUp} />
@@ -31,7 +31,7 @@ function App() {
               <Route exact path="/create" component={CreatePost} />
               <Route exact path="/post" component={Posts} />
               <Route exact path="/post/:slug" component={Post} />
-            </Switch>
+            </Routes>
           </AnimatePresence>
         </div>
       </div>

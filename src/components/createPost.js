@@ -2,14 +2,14 @@ import React, { useEffect, useState, useContext } from "react";
 import { createPost } from "../services/post";
 import { useMutation } from "react-query";
 import { styles } from "../styles/styles";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/context";
 function CreatePost() {
   //get current user data
   const state = useContext(AuthContext);
 
   //history to prevent from unauthorized
-  const history = useHistory();
+  const navigate = Navigate();
 
   //inputs fields
   const [image, setImage] = useState();
@@ -24,11 +24,11 @@ function CreatePost() {
   //check is login or not
   useEffect(() => {
     if (!state.state.isAuthenticate) {
-      history.push("/login");
+      navigate("/login");
     } else {
       return;
     }
-  }, [state.state.isAuthenticate, history]);
+  }, [state.state.isAuthenticate]);
   //create blog mutation
   const mutate = useMutation((post) => createPost(post), {
     onSuccess: ({ data }) => {

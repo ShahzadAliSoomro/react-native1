@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Layout from "./layout";
 import { signUp } from "../services/user";
 import { useMutation } from "react-query";
-import { useHistory } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function SignUp() {
-  const history = useHistory();
+  const navigate = Navigate();
   const [avatar, setAvatar] = useState();
-  const [loading,setLoading]=useState("Sign Up")
+  const [loading, setLoading] = useState("Sign Up");
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -16,19 +16,15 @@ function SignUp() {
   });
   const mutate = useMutation((user) => signUp(user), {
     onSuccess: (user) => {
-        setLoading("Loading...")
+      setLoading("Loading...");
       if (user.data.status) {
-
-        setLoading("Successful")
-        history.push("/login");
+        setLoading("Successful");
+        navigate("/login");
       } else {
-       
-        setLoading("Sign Up")
+        setLoading("Sign Up");
       }
     },
-    onError: () => {
-      
-    },
+    onError: () => {},
   });
   const signUpSubmit = (e) => {
     e.preventDefault();
