@@ -2,7 +2,7 @@ import "./App.css";
 import Posts from "./components/posts";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AnimatePresence } from "framer-motion";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import CreatePost from "./components/createPost";
 import Header from "./components/header";
 import Login from "./components/login";
@@ -10,11 +10,15 @@ import Post from "./components/post";
 import Portfolio from "./components/portfolio";
 import SignUp from "./components/signup";
 import SkillPage from "./components/skillPage";
+import MousePosition from "./components/cursorPointer";
 
+const router = createBrowserRouter([{ path: "/", element: <Portfolio /> }]);
 function App() {
-  const location = useLocation();
+  // const location = useLocation();
+
   return (
     <>
+      <MousePosition />
       <div className="flex">
         <div className="w-1/12 hidden md:block lg:block">
           <div className="fixed left-0 top-0 w-32">
@@ -22,7 +26,11 @@ function App() {
           </div>
         </div>
         <div className="w-11/12 overflow-hidden">
-          <AnimatePresence>
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+          </Routes>
+          {/* <RouterProvider router={router} /> */}
+          {/* <AnimatePresence>
             <Routes location={location} key={location.pathname}>
               <Route exact path="/" component={Portfolio} />
               <Route exact path="/login" component={Login} />
@@ -32,7 +40,7 @@ function App() {
               <Route exact path="/post" component={Posts} />
               <Route exact path="/post/:slug" component={Post} />
             </Routes>
-          </AnimatePresence>
+          </AnimatePresence> */}
         </div>
       </div>
 
